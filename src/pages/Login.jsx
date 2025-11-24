@@ -17,6 +17,14 @@ const Login = () => {
     setLoading(true);
     setErrorMsg("");
 
+    if (!supabase) {
+      setErrorMsg(
+        "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY."
+      );
+      setLoading(false);
+      return;
+    }
+
     const { data, error } = await supabase.auth.signInWithPassword({
       email: form.email,
       password: form.password,

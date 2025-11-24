@@ -9,7 +9,6 @@ const AnaestheticQuoteForm = ({ client }) => {
   const [theatreIn, setTheatreIn] = useState("");
   const [theatreOut, setTheatreOut] = useState("");
   const [emergency, setEmergency] = useState("no");
-  const [notes, setNotes] = useState("");
   const [baseUnits, setBaseUnits] = useState(10);
   const [unitRate, setUnitRate] = useState(250);
   const [modifiers, setModifiers] = useState(0);
@@ -42,13 +41,17 @@ const AnaestheticQuoteForm = ({ client }) => {
 
   const baseAmount = baseUnits * unitRate;
   const timeAmount = timeUnits * unitRate;
-  const emergencyExtra = emergency === "yes" ? 0.25 * (baseAmount + timeAmount) : 0;
+  const emergencyExtra =
+    emergency === "yes" ? 0.25 * (baseAmount + timeAmount) : 0;
   const total =
-    baseAmount + timeAmount + emergencyExtra + Number(modifiers || 0) + Number(bmiExtra || 0);
+    baseAmount +
+    timeAmount +
+    emergencyExtra +
+    Number(modifiers || 0) +
+    Number(bmiExtra || 0);
 
   const {
     practice_name,
-    contact_name,
     email,
     phone,
     address,

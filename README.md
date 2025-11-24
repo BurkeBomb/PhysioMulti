@@ -10,6 +10,9 @@ Full Vite + React project with:
 - Login + Register pages
 - Simple, clean UI
 
+This version includes extra guards so the app **does not white-screen**
+if Supabase is not configured yet – it will instead show a clear message.
+
 ## 1. Setup
 
 ```bash
@@ -21,7 +24,7 @@ Edit `.env` and add your Supabase project details:
 
 ```bash
 VITE_SUPABASE_URL=your-supabase-url
-VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
 ## 2. Supabase SQL
@@ -74,6 +77,11 @@ npm run dev
 
 Open the URL Vite prints (usually `http://localhost:5173`).
 
+- If Supabase env vars are **missing**, you will see a message in the UI
+  telling you exactly what to add instead of a blank screen.
+- Once env vars are set and Supabase is reachable, auth + client loading
+  will work normally.
+
 ## 4. Flow
 
 1. Go to `/register` and create a practice.
@@ -82,12 +90,6 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 3. The app loads your `clients` row and:
    - Shows the **Physiotherapy quote builder** if `specialty = physio`
    - Shows the **Anaesthetic quote builder** if `specialty = anaesthetic`
-
-You can later add more specialties by:
-
-- Extending the `specialty` enum in the SQL.
-- Creating new builder components.
-- Updating the `switch` in `src/App.jsx`.
 
 ## 5. Deploying to Vercel
 
@@ -99,9 +101,6 @@ You can later add more specialties by:
    - `VITE_SUPABASE_ANON_KEY`
 
 4. Build & deploy.
-
-Because this is a SPA with `react-router-dom`, Vercel will serve `index.html`
-for all routes by default when using the Vite preset.
 
 ## 6. Where to plug more logic
 

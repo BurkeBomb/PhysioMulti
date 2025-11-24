@@ -5,9 +5,35 @@ import AnaestheticQuoteForm from "./components/AnaestheticQuoteForm.jsx";
 import { supabase } from "./lib/supabaseClient";
 
 const App = () => {
-  const { client, clientLoading } = useClient();
+  const { client, clientLoading, clientError } = useClient();
+
+  if (!supabase) {
+    return (
+      <div className="app-shell">
+        <header>
+          <h1>AutoQuote – Supabase not configured</h1>
+        </header>
+        <main>
+          <div className="quote-card">
+            <p>
+              Supabase is not configured. Add{" "}
+              <code>VITE_SUPABASE_URL</code> and{" "}
+              <code>VITE_SUPABASE_ANON_KEY</code> to your <code>.env</code>{" "}
+              file, restart <code>npm run dev</code>, and refresh.
+            </p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   if (clientLoading) return <div>Loading your practice...</div>;
+  if (clientError)
+    return (
+      <div className="quote-card">
+        <p>Error loading practice: {clientError}</p>
+      </div>
+    );
   if (!client) return <div>No practice profile linked to this user.</div>;
 
   const { specialty, practice_name, contact_name } = client;
@@ -32,7 +58,9 @@ const App = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
     window.location.href = "/login";
   };
 

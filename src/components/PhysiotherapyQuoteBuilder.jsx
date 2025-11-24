@@ -37,7 +37,6 @@ const PhysiotherapyQuoteBuilder = ({ client }) => {
 
   const {
     practice_name,
-    contact_name,
     email,
     phone,
     address,

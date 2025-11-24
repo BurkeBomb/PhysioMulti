@@ -30,6 +30,14 @@ const Register = () => {
     setLoading(true);
     setErrorMsg("");
 
+    if (!supabase) {
+      setErrorMsg(
+        "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY."
+      );
+      setLoading(false);
+      return;
+    }
+
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,

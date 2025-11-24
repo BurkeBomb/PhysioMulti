@@ -10,16 +10,23 @@ export const ClientProvider = ({ children }) => {
   const { user } = useAuth();
   const [client, setClient] = useState(null);
   const [clientLoading, setClientLoading] = useState(true);
+  const [clientError, setClientError] = useState(null);
 
   useEffect(() => {
     const loadClient = async () => {
-      if (!user) {
+      if (!user || !supabase) {
         setClient(null);
         setClientLoading(false);
+        if (!supabase) {
+          setClientError(
+            "Supabase is not configured, client profile cannot be loaded."
+          );
+        }
         return;
       }
 
       setClientLoading(true);
+      setClientError(null);
 
       const { data, error } = await supabase
         .from("clients")
@@ -30,6 +37,7 @@ export const ClientProvider = ({ children }) => {
       if (error) {
         console.error("Error loading client", error);
         setClient(null);
+        setClientError(error.message);
       } else {
         setClient(data);
       }
@@ -40,7 +48,7 @@ export const ClientProvider = ({ children }) => {
     loadClient();
   }, [user]);
 
-  const value = { client, setClient, clientLoading };
+  const value = { client, setClient, clientLoading, clientError };
 
   return (
     <ClientContext.Provider value={value}>{children}</ClientContext.Provider>

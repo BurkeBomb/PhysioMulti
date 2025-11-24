@@ -9,9 +9,17 @@ import { ClientProvider } from "./context/ClientContext.jsx";
 import "./index.css";
 
 const ProtectedRoute = ({ children }) => {
-  const { user, authLoading } = useAuth();
+  const { user, authLoading, authError } = useAuth();
 
   if (authLoading) return <div>Checking session...</div>;
+  if (authError)
+    return (
+      <div className="auth-page">
+        <div className="quote-card">
+          <p>{authError}</p>
+        </div>
+      </div>
+    );
   if (!user) return <Navigate to="/login" replace />;
 
   return children;
