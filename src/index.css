@@ -1,0 +1,210 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell header {
+  background: #111827;
+  color: white;
+  padding: 1rem 1.5rem;
+}
+
+.app-shell header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.app-shell main {
+  padding: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.auth-page h1 {
+  margin-bottom: 1rem;
+}
+
+.auth-page form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  min-width: min(420px, 100%);
+}
+
+.auth-page label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-page input,
+.auth-page textarea,
+.auth-page select {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.auth-page button {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-page button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.auth-page .error {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.quote-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+}
+
+.quote-card header {
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.quote-card h2 {
+  margin: 0 0 0.25rem;
+}
+
+.quote-card .sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quote-grid label {
+  font-size: 0.85rem;
+}
+
+.quote-grid input,
+.quote-grid select,
+.quote-grid textarea {
+  font-size: 0.9rem;
+}
+
+.quote-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.quote-actions button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #111827;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.quote-actions button.secondary {
+  background: #4b5563;
+}
+
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.quote-table th,
+.quote-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+
+.quote-table th {
+  background: #f9fafb;
+}
+
+.quote-footer {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.badge-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #10b981;
+}
