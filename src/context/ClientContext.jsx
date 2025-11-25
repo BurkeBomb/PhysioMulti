@@ -29,10 +29,10 @@ export const ClientProvider = ({ children }) => {
       setClientError(null);
 
       const { data, error } = await supabase
-        .from("clients")
-        .select("*")
-        .eq("user_id", user.id)
-        .single();
+      .from("clients")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle();
 
       if (error) {
         console.error("Error loading client", error);
