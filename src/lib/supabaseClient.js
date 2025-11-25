@@ -1,17 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_URL = "https://xhdjqefgnitsqkeqzbts.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhoZGpxZWZnbml0c3FrZXF6YnRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5OTAyMTQsImV4cCI6MjA3OTU2NjIxNH0.VkPpIyd5NltGASNN6PsgpnL9JZvfNFVyQjnkeXUkWjI";
 
-let supabase = null;
-
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error(
-    "[Supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. " +
-      "Auth will be disabled until you add them."
-  );
-} else {
-  supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
-
-export { supabase };
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
